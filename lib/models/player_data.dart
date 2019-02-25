@@ -16,7 +16,7 @@ class PlayerData {
         playerData = PlayerData.fromJson(json);
       },
       cache: FileResource(File('$path/player_data.json')),
-      maxAge: Duration(days: 1),
+      maxAge: Duration(days: 10),
       strategy: CacheStrategy.networkFirst,
     );
 
