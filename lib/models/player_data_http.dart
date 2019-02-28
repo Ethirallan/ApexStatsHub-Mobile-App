@@ -15,7 +15,7 @@ Future<PlayerData> getPlayerData(String name) async {
       playerData = PlayerData.fromJson(json);
     },
     cache: FileResource(File('$path/player_data.json')),
-    maxAge: Duration(days: 10),
+    maxAge: Duration(days: 1),
     strategy: CacheStrategy.networkFirst,
   );
 

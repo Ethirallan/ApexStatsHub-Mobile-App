@@ -16,11 +16,11 @@ class ColorBarForStats extends StatelessWidget {
         width: MediaQuery.of(context).size.width - 50,
         animation: true,
         lineHeight: 24,
-        animationDuration: 2500,
+        animationDuration: 1000,
         percent: percent,
         center: text,
         linearStrokeCap: LinearStrokeCap.roundAll,
-        backgroundColor: MyColors.grey,
+        backgroundColor: MyColors.lightGrey,
         progressColor: MyColors.orange,
       ),
     );

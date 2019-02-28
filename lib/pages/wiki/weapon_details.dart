@@ -33,9 +33,15 @@ class WeaponDetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Image.network(weapon.image.url),
-              textNormal('Description: ' + weapon.description, MyColors.lightGrey, 20),
+              Padding(
+                padding: EdgeInsets.only(top: 4, bottom: 4),
+                child: textNormal('Description: ' + weapon.description, MyColors.lightGrey, 20),
+              ),
               textNormal('Ammo: ' + weapon.ammo, MyColors.lightGrey, 20),
-              textNormal('Recoil: ' + weapon.recoil, Colors.white, 20),
+              Padding(
+                padding: EdgeInsets.only(top: 4, bottom: 4),
+                child: textNormal('Recoil: ' + weapon.recoil, Colors.white, 20),
+              ),
               ColorBarForStats(textNormal('Loading time: ' + weapon.loadingTime.toString(), Colors.white, 20), getPercent(wCalc.maxLoadingTime, weapon.loadingTime)),
               ColorBarForStats(textNormal('Empty time: ' + weapon.emptyTime.toString(), Colors.white, 20), getPercent(wCalc.maxEmptyTime, weapon.emptyTime)),
               ColorBarForStats(textNormal('Mag size: ' + weapon.magSize.toString(), Colors.white, 20), getPercent(wCalc.maxMagSize, weapon.magSize)),

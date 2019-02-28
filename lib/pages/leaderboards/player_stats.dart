@@ -124,7 +124,7 @@ class PlayerStats extends StatelessWidget {
                           child: textBold('CHARACTER STATS', MyColors.orange, 24),
                         ),
                         legendDataRow(
-                          'https://arcane-fjord-65313.herokuapp.com/img/Bangalore_Icon.png',
+                          'https://arcane-fjord-65313.herokuapp.com/img/characters/Bangalore_Icon.png',
                           'Bangalore',
                           model.playerData.kills_Bangalore,
                           model.playerData.headshots_Bangalore,
@@ -132,7 +132,7 @@ class PlayerStats extends StatelessWidget {
                           MyColors.orange,
                         ),
                         legendDataRow(
-                          'https://arcane-fjord-65313.herokuapp.com/img/Bloodhound_Icon.png',
+                          'https://arcane-fjord-65313.herokuapp.com/img/characters/Bloodhound_Icon.png',
                           'Bloodhound',
                           model.playerData.kills_Bloodhound,
                           model.playerData.headshots_Bloodhound,
@@ -140,7 +140,7 @@ class PlayerStats extends StatelessWidget {
                           MyColors.grey,
                         ),
                         legendDataRow(
-                          'https://arcane-fjord-65313.herokuapp.com/img/Caustic_Icon.png',
+                          'https://arcane-fjord-65313.herokuapp.com/img/characters/Caustic_Icon.png',
                           'Caustic',
                           model.playerData.kills_Caustic,
                           model.playerData.headshots_Caustic,
@@ -148,7 +148,7 @@ class PlayerStats extends StatelessWidget {
                           MyColors.orange,
                         ),
                         legendDataRow(
-                          'https://arcane-fjord-65313.herokuapp.com/img/Gibraltar_Icon.png',
+                          'https://arcane-fjord-65313.herokuapp.com/img/characters/Gibraltar_Icon.png',
                           'Gibraltar',
                           model.playerData.kills_Gibraltar,
                           model.playerData.headshots_Gibraltar,
@@ -156,7 +156,7 @@ class PlayerStats extends StatelessWidget {
                           MyColors.grey,
                         ),
                         legendDataRow(
-                          'https://arcane-fjord-65313.herokuapp.com/img/Lifeline_Icon.png',
+                          'https://arcane-fjord-65313.herokuapp.com/img/characters/Lifeline_Icon.png',
                           'Lifeline',
                           model.playerData.kills_Lifeline,
                           model.playerData.headshots_Lifeline,
@@ -164,7 +164,7 @@ class PlayerStats extends StatelessWidget {
                           MyColors.orange,
                         ),
                         legendDataRow(
-                          'https://arcane-fjord-65313.herokuapp.com/img/Mirage_Icon.png',
+                          'https://arcane-fjord-65313.herokuapp.com/img/characters/Mirage_Icon.png',
                           'Mirage',
                           model.playerData.kills_Mirage,
                           model.playerData.headshots_Mirage,
@@ -172,7 +172,7 @@ class PlayerStats extends StatelessWidget {
                           MyColors.grey,
                         ),
                         legendDataRow(
-                          'https://arcane-fjord-65313.herokuapp.com/img/Pathfinder_Icon.png',
+                          'https://arcane-fjord-65313.herokuapp.com/img/characters/Pathfinder_Icon.png',
                           'Pathfinder',
                           model.playerData.kills_Pathfinder,
                           model.playerData.headshots_Pathfinder,
@@ -180,7 +180,7 @@ class PlayerStats extends StatelessWidget {
                           MyColors.orange,
                         ),
                         legendDataRow(
-                          'https://arcane-fjord-65313.herokuapp.com/img/Wraith_Icon.png',
+                          'https://arcane-fjord-65313.herokuapp.com/img/characters/Wraith_Icon.png',
                           'Wraith',
                           model.playerData.kills_Wraith,
                           model.playerData.headshots_Wraith,
