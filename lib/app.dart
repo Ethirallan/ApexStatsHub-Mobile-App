@@ -3,6 +3,7 @@ import 'package:apex_stats_hub/pages/leaderboards/leaderboards.dart';
 import 'package:apex_stats_hub/pages/guides/guides.dart';
 import 'package:apex_stats_hub/pages/streams/streams.dart';
 import 'package:apex_stats_hub/pages/news/news.dart';
+import 'package:apex_stats_hub/pages/wiki/wiki.dart';
 
 class App extends StatelessWidget {
   @override
@@ -16,6 +17,7 @@ class App extends StatelessWidget {
         '/news': (context) => News(),
         '/guides': (context) => Guides(),
         '/streams': (context) => Streams(),
+        '/wiki': (context) => Wiki(),
       },
     );
   }

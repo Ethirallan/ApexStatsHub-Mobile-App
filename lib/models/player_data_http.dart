@@ -3,27 +3,27 @@ import 'package:async_resource/async_resource.dart';
 import 'package:async_resource/file_resource.dart';
 import 'dart:convert';
 
+
+Future<PlayerData> getPlayerData(String name) async {
+  final path = (await getApplicationDocumentsDirectory()).path;
+  PlayerData playerData;
+
+  final playerDataResource = HttpNetworkResource<Future<PlayerData>>(
+    url: 'http://vakedomen.ddns.net:4000/player?platform=pc&player=$name',
+    parser: (contents) {
+      Map<String, dynamic> json = jsonDecode(contents);
+      playerData = PlayerData.fromJson(json);
+    },
+    cache: FileResource(File('$path/player_data.json')),
+    maxAge: Duration(days: 10),
+    strategy: CacheStrategy.networkFirst,
+  );
+
+  await playerDataResource.get();
+  return playerData;
+}
+
 class PlayerData {
-
-  Future<PlayerData> getPlayerData(String name) async {
-    final path = (await getApplicationDocumentsDirectory()).path;
-    PlayerData playerData;
-
-    final playerDataResource = HttpNetworkResource<Future<PlayerData>>(
-      url: 'http://vakedomen.ddns.net:4000/player?platform=pc&player=$name',
-      parser: (contents) {
-        Map<String, dynamic> json = jsonDecode(contents);
-        playerData = PlayerData.fromJson(json);
-      },
-      cache: FileResource(File('$path/player_data.json')),
-      maxAge: Duration(days: 10),
-      strategy: CacheStrategy.networkFirst,
-    );
-
-    await playerDataResource.get();
-    return playerData;
-  }
-
 
   bool playerfound;
   String aid;

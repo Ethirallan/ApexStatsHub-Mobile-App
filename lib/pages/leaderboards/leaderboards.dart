@@ -4,12 +4,20 @@ import 'package:apex_stats_hub/custom_widgets.dart';
 import 'package:apex_stats_hub/my_colors.dart';
 import 'package:apex_stats_hub/scoped_models/scoped_player_info.dart';
 import 'package:apex_stats_hub/my_drawer.dart';
-import 'package:apex_stats_hub/models/player_data.dart';
+import 'package:apex_stats_hub/models/player_data_http.dart';
 import 'package:apex_stats_hub/pages/leaderboards/player_stats.dart';
 import 'package:apex_stats_hub/pages/leaderboards/apex_player_search_bar.dart';
 
-class LeaderBoards extends StatelessWidget {
+class LeaderBoards extends StatefulWidget {
+  @override
+  LeaderBoardsState createState() {
+    return new LeaderBoardsState();
+  }
+}
+
+class LeaderBoardsState extends State<LeaderBoards> {
   final ScopedPlayerInfo scopedPlayerInfo = new ScopedPlayerInfo();
+
   @override
   Widget build(BuildContext context) {
     return ScopedModel<ScopedPlayerInfo>(
@@ -30,7 +38,9 @@ class LeaderBoards extends StatelessWidget {
                 ApexPlayerSearchBar(
                   searchBarCtrl: scopedPlayerInfo.searchPlayerCtrl,
                   arrowFunction: () async {
-                    var data = await PlayerData().getPlayerData(scopedPlayerInfo.searchPlayerCtrl.text);
+                    FocusScope.of(context).requestFocus(new FocusNode());
+                    //add loading
+                    var data = await getPlayerData(scopedPlayerInfo.searchPlayerCtrl.text);
                     scopedPlayerInfo.setData(data);
                   },
                 ),

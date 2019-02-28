@@ -36,6 +36,12 @@ class MyDrawer extends StatelessWidget {
               },
             ),
             ListTile(
+              title: textNormal('Wiki', MyColors.lightGrey, 20),
+              onTap: () {
+                Navigator.pushReplacementNamed(context, '/wiki');
+              },
+            ),
+            ListTile(
               title: textNormal('Streams', MyColors.lightGrey, 20),
               onTap: () {
                 Navigator.pushReplacementNamed(context, '/streams');

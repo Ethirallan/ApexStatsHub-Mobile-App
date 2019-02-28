@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 
-Widget textNormal(String text, Color color, double size) {
+Widget textNormal(String text, Color color, double size, {TextAlign textAlign}) {
   return Text(
     text,
+    textAlign: textAlign,
     style: TextStyle(
       color: color,
       fontSize: size,
@@ -12,9 +13,10 @@ Widget textNormal(String text, Color color, double size) {
   );
 }
 
-Widget textBold(String text, Color color, double size) {
+Widget textBold(String text, Color color, double size, {TextAlign textAlign}) {
   return Text(
     text,
+    textAlign: textAlign,
     style: TextStyle(
       color: color,
       fontSize: size,
