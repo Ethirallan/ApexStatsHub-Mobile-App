@@ -32,7 +32,10 @@ class WeaponDetails extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Image.network(weapon.image.url),
+              Hero(
+                child: Image.network(weapon.image.url),
+                tag: 'weaponImg' + weapon.name,
+              ),
               Padding(
                 padding: EdgeInsets.only(top: 4, bottom: 4),
                 child: textNormal('Description: ' + weapon.description, MyColors.lightGrey, 20),

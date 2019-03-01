@@ -25,11 +25,11 @@ Future<PlayerData> getPlayerData(String name) async {
 
 class PlayerData {
 
-  bool playerfound;
+  bool playerFound;
   String aid;
   String name;
   String platform;
-  int skillratio;
+  int skillRatio;
   String visits;
   String avatar;
   String legend;
@@ -38,49 +38,49 @@ class PlayerData {
   String headshots;
   String matches;
   String damage;
-  var lastdata;
-  String kills_Bloodhound;
-  String kills_Gibraltar;
-  String kills_Lifeline;
-  String kills_Pathfinder;
-  String kills_Wraith;
-  String kills_Bangalore;
-  String kills_Caustic;
-  String kills_Mirage;
-  String headshots_Bloodhound;
-  String headshots_Gibraltar;
-  String headshots_Lifeline;
-  String headshots_Pathfinder;
-  String headshots_Wraith;
-  String headshots_Bangalore;
-  String headshots_Caustic;
-  String headshots_Mirage;
-  String matches_Bloodhound;
-  String matches_Gibraltar;
-  String matches_Lifeline;
-  String matches_Pathfinder;
-  String matches_Wraith;
-  String matches_Bangalore;
-  String matches_Caustic;
-  String matches_Mirage;
-  String damage_Bloodhound;
-  String damage_Gibraltar;
-  String damage_Lifeline;
-  String damage_Pathfinder;
-  String damage_Wraith;
-  String damage_Bangalore;
-  String damage_Caustic;
-  String damage_Mirage;
-  String globalrank;
-  String utime;
-  var daily_stats;
+  var lastData;
+  String killsBloodhound;
+  String killsGibraltar;
+  String killsLifeline;
+  String killsPathfinder;
+  String killsWraith;
+  String killsBangalore;
+  String killsCaustic;
+  String killsMirage;
+  String headshotsBloodhound;
+  String headshotsGibraltar;
+  String headshotsLifeline;
+  String headshotsPathfinder;
+  String headshotsWraith;
+  String headshotsBangalore;
+  String headshotsCaustic;
+  String headshotsMirage;
+  String matchesBloodhound;
+  String matchesGibraltar;
+  String matchesLifeline;
+  String matchesPathfinder;
+  String matchesWraith;
+  String matchesBangalore;
+  String matchesCaustic;
+  String matchesMirage;
+  String damageBloodhound;
+  String damageGibraltar;
+  String damageLifeline;
+  String damagePathfinder;
+  String damageWraith;
+  String damageBangalore;
+  String damageCaustic;
+  String damageMirage;
+  String globalRank;
+  String ultTime;
+  var dailyStats;
 
   PlayerData({
-    this.playerfound,
+    this.playerFound,
     this.aid,
     this.name,
     this.platform,
-    this.skillratio,
+    this.skillRatio,
     this.visits,
     this.avatar,
     this.legend,
@@ -89,52 +89,52 @@ class PlayerData {
     this.headshots,
     this.matches,
     this.damage,
-    this.lastdata,
-    this.kills_Bloodhound,
-    this.kills_Gibraltar,
-    this.kills_Lifeline,
-    this.kills_Pathfinder,
-    this.kills_Wraith,
-    this.kills_Bangalore,
-    this.kills_Caustic,
-    this.kills_Mirage,
-    this.headshots_Bloodhound,
-    this.headshots_Gibraltar,
-    this.headshots_Lifeline,
-    this.headshots_Pathfinder,
-    this.headshots_Wraith,
-    this.headshots_Bangalore,
-    this.headshots_Caustic,
-    this.headshots_Mirage,
-    this.matches_Bloodhound,
-    this.matches_Gibraltar,
-    this.matches_Lifeline,
-    this.matches_Pathfinder,
-    this.matches_Wraith,
-    this.matches_Bangalore,
-    this.matches_Caustic,
-    this.matches_Mirage,
-    this.damage_Bloodhound,
-    this.damage_Gibraltar,
-    this.damage_Lifeline,
-    this.damage_Pathfinder,
-    this.damage_Wraith,
-    this.damage_Bangalore,
-    this.damage_Caustic,
-    this.damage_Mirage,
-    this.globalrank,
-    this.utime,
-    this.daily_stats
+    this.lastData,
+    this.killsBloodhound,
+    this.killsGibraltar,
+    this.killsLifeline,
+    this.killsPathfinder,
+    this.killsWraith,
+    this.killsBangalore,
+    this.killsCaustic,
+    this.killsMirage,
+    this.headshotsBloodhound,
+    this.headshotsGibraltar,
+    this.headshotsLifeline,
+    this.headshotsPathfinder,
+    this.headshotsWraith,
+    this.headshotsBangalore,
+    this.headshotsCaustic,
+    this.headshotsMirage,
+    this.matchesBloodhound,
+    this.matchesGibraltar,
+    this.matchesLifeline,
+    this.matchesPathfinder,
+    this.matchesWraith,
+    this.matchesBangalore,
+    this.matchesCaustic,
+    this.matchesMirage,
+    this.damageBloodhound,
+    this.damageGibraltar,
+    this.damageLifeline,
+    this.damagePathfinder,
+    this.damageWraith,
+    this.damageBangalore,
+    this.damageCaustic,
+    this.damageMirage,
+    this.globalRank,
+    this.ultTime,
+    this.dailyStats
   });
 
 
   factory PlayerData.fromJson(Map<String, dynamic> parsedJson){
     return PlayerData(
-      playerfound: parsedJson['playerfound'],
+      playerFound: parsedJson['playerfound'],
       aid : parsedJson['aid'],
       platform : parsedJson ['platform'],
       name : parsedJson ['name'],
-      skillratio : parsedJson ['skillratio'],
+      skillRatio : parsedJson ['skillratio'],
       visits : parsedJson ['visits'],
       avatar : parsedJson ['avatar'],
       legend : parsedJson ['legend'],
@@ -143,42 +143,42 @@ class PlayerData {
       headshots : parsedJson ['headshots'],
       matches : parsedJson ['matches'],
       damage : parsedJson ['damage'],
-      lastdata : parsedJson ['lastdata'],
-      kills_Bloodhound : parsedJson ['kills_Bloodhound'],
-      kills_Gibraltar : parsedJson ['kills_Gibraltar'],
-      kills_Lifeline : parsedJson ['kills_Lifeline'],
-      kills_Pathfinder : parsedJson ['kills_Pathfinder'],
-      kills_Wraith : parsedJson ['kills_Wraith'],
-      kills_Bangalore : parsedJson ['kills_Bangalore'],
-      kills_Caustic : parsedJson ['kills_Caustic'],
-      kills_Mirage : parsedJson ['kills_Mirage'],
-      headshots_Bloodhound : parsedJson ['headshots_Bloodhound'],
-      headshots_Gibraltar : parsedJson ['headshots_Gibraltar'],
-      headshots_Lifeline : parsedJson ['headshots_Lifeline'],
-      headshots_Pathfinder : parsedJson ['headshots_Pathfinder'],
-      headshots_Wraith : parsedJson ['headshots_Wraith'],
-      headshots_Bangalore : parsedJson ['headshots_Bangalore'],
-      headshots_Caustic : parsedJson ['headshots_Caustic'],
-      headshots_Mirage : parsedJson ['headshots_Mirage'],
-      matches_Bloodhound : parsedJson ['matches_Bloodhound'],
-      matches_Gibraltar : parsedJson ['matches_Gibraltar'],
-      matches_Lifeline : parsedJson ['matches_Lifeline'],
-      matches_Pathfinder : parsedJson ['matches_Pathfinder'],
-      matches_Wraith : parsedJson ['matches_Wraith'],
-      matches_Bangalore : parsedJson ['matches_Bangalore'],
-      matches_Caustic : parsedJson ['matches_Caustic'],
-      matches_Mirage : parsedJson ['matches_Mirage'],
-      damage_Bloodhound : parsedJson ['damage_Bloodhound'],
-      damage_Gibraltar : parsedJson ['damage_Gibraltar'],
-      damage_Lifeline : parsedJson ['damage_Lifeline'],
-      damage_Pathfinder : parsedJson ['damage_Pathfinder'],
-      damage_Wraith : parsedJson ['damage_Wraith'],
-      damage_Bangalore : parsedJson ['damage_Bangalore'],
-      damage_Caustic : parsedJson ['damage_Caustic'],
-      damage_Mirage : parsedJson ['damage_Mirage'],
-      globalrank : parsedJson ['globalrank'],
-      utime : parsedJson ['utime'],
-      daily_stats : parsedJson ['daily_stats'],
+      lastData : parsedJson ['lastdata'],
+      killsBloodhound : parsedJson ['kills_Bloodhound'],
+      killsGibraltar : parsedJson ['kills_Gibraltar'],
+      killsLifeline : parsedJson ['kills_Lifeline'],
+      killsPathfinder : parsedJson ['kills_Pathfinder'],
+      killsWraith : parsedJson ['kills_Wraith'],
+      killsBangalore : parsedJson ['kills_Bangalore'],
+      killsCaustic : parsedJson ['kills_Caustic'],
+      killsMirage : parsedJson ['kills_Mirage'],
+      headshotsBloodhound : parsedJson ['headshots_Bloodhound'],
+      headshotsGibraltar : parsedJson ['headshots_Gibraltar'],
+      headshotsLifeline : parsedJson ['headshots_Lifeline'],
+      headshotsPathfinder : parsedJson ['headshots_Pathfinder'],
+      headshotsWraith : parsedJson ['headshots_Wraith'],
+      headshotsBangalore : parsedJson ['headshots_Bangalore'],
+      headshotsCaustic : parsedJson ['headshots_Caustic'],
+      headshotsMirage : parsedJson ['headshots_Mirage'],
+      matchesBloodhound : parsedJson ['matches_Bloodhound'],
+      matchesGibraltar : parsedJson ['matches_Gibraltar'],
+      matchesLifeline : parsedJson ['matches_Lifeline'],
+      matchesPathfinder : parsedJson ['matches_Pathfinder'],
+      matchesWraith : parsedJson ['matches_Wraith'],
+      matchesBangalore : parsedJson ['matches_Bangalore'],
+      matchesCaustic : parsedJson ['matches_Caustic'],
+      matchesMirage : parsedJson ['matches_Mirage'],
+      damageBloodhound : parsedJson ['damage_Bloodhound'],
+      damageGibraltar : parsedJson ['damage_Gibraltar'],
+      damageLifeline : parsedJson ['damage_Lifeline'],
+      damagePathfinder : parsedJson ['damage_Pathfinder'],
+      damageWraith : parsedJson ['damage_Wraith'],
+      damageBangalore : parsedJson ['damage_Bangalore'],
+      damageCaustic : parsedJson ['damage_Caustic'],
+      damageMirage : parsedJson ['damage_Mirage'],
+      globalRank : parsedJson ['globalrank'],
+      ultTime : parsedJson ['utime'],
+      dailyStats : parsedJson ['daily_stats'],
     );
   }
 

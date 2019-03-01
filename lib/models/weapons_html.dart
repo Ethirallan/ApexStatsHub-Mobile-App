@@ -2,6 +2,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:async_resource/async_resource.dart';
 import 'package:async_resource/file_resource.dart';
 import 'dart:convert';
+import 'package:apex_stats_hub/models/image_object.dart';
 
 Future<List<Weapon>> getWeapons() async {
   final path = (await getApplicationDocumentsDirectory()).path;
@@ -20,33 +21,6 @@ Future<List<Weapon>> getWeapons() async {
 
   await weaponsResource.get();
   return weapons;
-}
-
-class WeaponCalculations {
-  double maxLoadingTime = 0.0;
-  double maxEmptyTime = 0.0;
-  double maxMagSize = 0.0;
-  double maxBodyDMG = 0.0;
-  double maxHeadDMG = 0.0;
-  double maxRPM = 0.0;
-  double maxBodyDPS = 0.0;
-  double maxHeadDPS = 0.0;
-  double maxMaxHeadshotRange = 0.0;
-
-  void getMaxValues(List<Weapon> weapons) {
-    for (int i = 0; i < weapons.length; i++) {
-      if (weapons[i].loadingTime > maxLoadingTime.toDouble()) maxLoadingTime = weapons[i].loadingTime.toDouble();
-      if (weapons[i].emptyTime > maxEmptyTime.toDouble()) maxEmptyTime = weapons[i].emptyTime.toDouble();
-      if (weapons[i].magSize.toDouble() > maxMagSize) maxMagSize = weapons[i].magSize.toDouble();
-      if (weapons[i].dmgBody.toDouble() > maxBodyDMG) maxBodyDMG = weapons[i].dmgBody.toDouble();
-      if (weapons[i].dmgHead.toDouble() > maxHeadDMG) maxHeadDMG = weapons[i].dmgHead.toDouble();
-      if (weapons[i].rpm.toDouble() > maxRPM) maxRPM = weapons[i].rpm.toDouble();
-      if (weapons[i].dpsBody.toDouble() > maxBodyDPS) maxBodyDPS = weapons[i].dpsBody.toDouble();
-      if (weapons[i].dpsHead.toDouble() > maxHeadDPS) maxHeadDPS = weapons[i].dpsHead.toDouble();
-      if (weapons[i].maxHeadshotRange.toDouble() > maxMaxHeadshotRange) maxMaxHeadshotRange = weapons[i].maxHeadshotRange.toDouble();
-    }
-  }
-
 }
 
 class Weapon {
@@ -69,7 +43,7 @@ class Weapon {
   List<String> fireMode;
   List<String> attachments;
   var recoil;
-  WeaponImage image;
+  ImageObject image;
 
 
   Weapon({
@@ -122,23 +96,36 @@ class Weapon {
       fireMode: fireModeJson,
       attachments: attachmentsJson,
       recoil: parsedJson['recoil'],
-      image: WeaponImage.fromJson(parsedJson['image'][0]),
+      image: ImageObject.fromJson(parsedJson['image'][0]),
     );
   }
 
 }
 
-class WeaponImage {
-  String alias;
-  String url;
+class WeaponCalculations {
+  double maxLoadingTime = 0.0;
+  double maxEmptyTime = 0.0;
+  double maxMagSize = 0.0;
+  double maxBodyDMG = 0.0;
+  double maxHeadDMG = 0.0;
+  double maxRPM = 0.0;
+  double maxBodyDPS = 0.0;
+  double maxHeadDPS = 0.0;
+  double maxMaxHeadshotRange = 0.0;
 
-  WeaponImage({this.alias, this.url});
-
-  factory WeaponImage.fromJson(Map<String, dynamic> parsedJson){
-    return WeaponImage(
-      alias: parsedJson['alias'],
-      url: parsedJson['url'],
-    );
+  void getMaxValues(List<Weapon> weapons) {
+    for (int i = 0; i < weapons.length; i++) {
+      if (weapons[i].loadingTime > maxLoadingTime.toDouble()) maxLoadingTime = weapons[i].loadingTime.toDouble();
+      if (weapons[i].emptyTime > maxEmptyTime.toDouble()) maxEmptyTime = weapons[i].emptyTime.toDouble();
+      if (weapons[i].magSize.toDouble() > maxMagSize) maxMagSize = weapons[i].magSize.toDouble();
+      if (weapons[i].dmgBody.toDouble() > maxBodyDMG) maxBodyDMG = weapons[i].dmgBody.toDouble();
+      if (weapons[i].dmgHead.toDouble() > maxHeadDMG) maxHeadDMG = weapons[i].dmgHead.toDouble();
+      if (weapons[i].rpm.toDouble() > maxRPM) maxRPM = weapons[i].rpm.toDouble();
+      if (weapons[i].dpsBody.toDouble() > maxBodyDPS) maxBodyDPS = weapons[i].dpsBody.toDouble();
+      if (weapons[i].dpsHead.toDouble() > maxHeadDPS) maxHeadDPS = weapons[i].dpsHead.toDouble();
+      if (weapons[i].maxHeadshotRange.toDouble() > maxMaxHeadshotRange) maxMaxHeadshotRange = weapons[i].maxHeadshotRange.toDouble();
+    }
   }
+
 }
 

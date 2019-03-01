@@ -20,31 +20,36 @@ class MyDrawer extends StatelessWidget {
             ListTile(
               title: textNormal('Leaderboards', MyColors.lightGrey, 20),
               onTap: () {
-                Navigator.pushReplacementNamed(context, '/');
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/');
               },
             ),
             ListTile(
               title: textNormal('News', MyColors.lightGrey, 20),
               onTap: () {
-                Navigator.pushReplacementNamed(context, '/news');
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/news');
               },
             ),
             ListTile(
               title: textNormal('Guides', MyColors.lightGrey, 20),
               onTap: () {
-                Navigator.pushReplacementNamed(context, '/guides');
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/guides');
               },
             ),
             ListTile(
               title: textNormal('Wiki', MyColors.lightGrey, 20),
               onTap: () {
-                Navigator.pushReplacementNamed(context, '/wiki');
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/wiki');
               },
             ),
             ListTile(
               title: textNormal('Streams', MyColors.lightGrey, 20),
               onTap: () {
-                Navigator.pushReplacementNamed(context, '/streams');
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/streams');
               },
             ),
           ],
