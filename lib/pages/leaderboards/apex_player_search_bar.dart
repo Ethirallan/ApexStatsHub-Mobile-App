@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:apex_stats_hub/my_colors.dart';
+import 'package:apex_stats_hub/pages/leaderboards/leaderboards.dart';
 
 class ApexPlayerSearchBar extends StatelessWidget {
+  final BuildContext context;
   final Function arrowFunction;
   final TextEditingController searchBarCtrl;
-  ApexPlayerSearchBar({this.searchBarCtrl, this.arrowFunction});
+  ApexPlayerSearchBar({this.searchBarCtrl, this.arrowFunction, this.context});
 
   Widget orangeBoxWithIconGaming() {
     return SizedBox(
@@ -53,6 +55,10 @@ class ApexPlayerSearchBar extends StatelessWidget {
           fontWeight: FontWeight.normal,
         ),
         controller: ctrl,
+        textInputAction: TextInputAction.search,
+        onFieldSubmitted: (term) async {
+          await LeaderBoardsState().searchForPlayer();
+        },
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: 'Search profile',

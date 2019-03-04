@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'dart:io';
 
 Widget textNormal(String text, Color color, double size, {TextAlign textAlign}) {
   return Text(
@@ -39,4 +39,48 @@ Widget textNormalAlignRight(String text, Color color, double size) {
   );
 }
 
+Future<bool> onExitDialog(BuildContext context) {
+  return showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text("Exit dialog"),
+        content: Text("Do you really want to exit?"),
+        actions: <Widget>[
+          FlatButton(
+            child: Text("Yes"),
+            onPressed: () {
+              exit(0);
+            },
+          ),
+          FlatButton(
+            child: Text("No"),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ],
+      );
+    },
+  ) ?? false;
+}
+
+void loadingDialog(BuildContext context) {
+  showDialog(
+    barrierDismissible: false,
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text("Loading ..."),
+        content: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            CircularProgressIndicator(),
+          ],
+        ),
+      );
+    }
+  );
+}
 
