@@ -43,7 +43,9 @@ class LeaderBoardsState extends State<LeaderBoards> {
                     context: context,
                     searchBarCtrl: scopedPlayerInfo.searchPlayerCtrl,
                     arrowFunction: () async {
-                      await searchForPlayer();
+                      if (scopedPlayerInfo.searchPlayerCtrl.text != '') {
+                        await searchForPlayer();
+                      }
                     },
                   ),
                   PlayerStats(),

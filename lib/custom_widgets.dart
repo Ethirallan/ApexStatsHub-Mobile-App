@@ -70,14 +70,17 @@ void loadingDialog(BuildContext context) {
     barrierDismissible: false,
     context: context,
     builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text("Loading ..."),
-        content: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            CircularProgressIndicator(),
-          ],
+      return WillPopScope(
+        onWillPop: () async => false,
+        child: AlertDialog(
+          title: Text("Loading ..."),
+          content: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              CircularProgressIndicator(),
+            ],
+          ),
         ),
       );
     }
