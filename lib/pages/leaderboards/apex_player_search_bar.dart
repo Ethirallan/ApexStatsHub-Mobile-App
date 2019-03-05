@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:apex_stats_hub/my_colors.dart';
 import 'package:apex_stats_hub/pages/leaderboards/leaderboards.dart';
+import 'package:apex_stats_hub/custom_widgets.dart';
 
 class ApexPlayerSearchBar extends StatelessWidget {
   final BuildContext context;
@@ -8,20 +9,34 @@ class ApexPlayerSearchBar extends StatelessWidget {
   final TextEditingController searchBarCtrl;
   ApexPlayerSearchBar({this.searchBarCtrl, this.arrowFunction, this.context});
 
-  Widget orangeBoxWithIconGaming() {
+  Widget orangeBoxWithPlatformIcon() {
     return SizedBox(
       height: 50,
       width: 50,
-      child: RaisedButton(
-        onPressed: () {},
-        color: MyColors.orange,
-        shape: RoundedRectangleBorder(
+      child: Container(
+        decoration: BoxDecoration(
+          color: MyColors.orange,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(3),
             bottomLeft: Radius.circular(3),
+          )
+        ),
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            cardColor: MyColors.grey,
+          ),
+          child: PopupMenuButton(
+            icon: Icon(LeaderBoardsState.scopedPlayerInfo.platformIcon, color: Colors.white, size: 30,),
+            onSelected: (val)  {
+              LeaderBoardsState.scopedPlayerInfo.setPlatformInfo(val);
+            },
+            itemBuilder: (_) => <PopupMenuItem<String>>[
+              PopupMenuItem<String>(child: textNormal('Windows', MyColors.orange, 20), value: 'pc'),
+              PopupMenuItem<String>(child: textNormal('PlayStation', MyColors.orange, 20), value: 'ps'),
+              PopupMenuItem<String>(child: textNormal('Xbox', MyColors.orange, 20), value: 'xb'),
+            ],
           ),
         ),
-        child: Icon(Icons.videogame_asset, color: Colors.white, size: 30,),
       ),
     );
   }
@@ -85,7 +100,7 @@ class ApexPlayerSearchBar extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Expanded(
-                child: orangeBoxWithIconGaming(),
+                child: orangeBoxWithPlatformIcon(),
                 flex: 1,
               ),
               Expanded(

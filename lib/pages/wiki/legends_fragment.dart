@@ -9,7 +9,7 @@ class LegendsFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //color: MyColors.darkGrey,
+      color: MyColors.darkGrey,
       child: FutureBuilder<List<Legend>>(
         future: getLegends(),
         builder: (context, snapshot) {

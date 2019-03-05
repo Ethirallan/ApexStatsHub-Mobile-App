@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:apex_stats_hub/models/guides_html.dart';
 import 'package:apex_stats_hub/my_colors.dart';
-import 'package:apex_stats_hub/custom_widgets.dart';
+import 'package:youtube_player/youtube_player.dart';
 
 
-class GameplayGuide extends StatelessWidget {
+class GameplayGuides extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,11 +21,21 @@ class GameplayGuide extends StatelessWidget {
                 itemCount: data.length,
                 itemBuilder: (context, index) {
                   YTVideo ytVideo = data[index];
+                  VideoPlayerController videoCtrl = new VideoPlayerController.network(ytVideo.url);
                   return Card(
                     elevation: 4,
                     child: Container(
-                      child: textNormal(ytVideo.url, Colors.white, 20),
-                    )
+                      child: YoutubePlayer(
+                        context: context,
+                        source: ytVideo.url,
+                        quality: YoutubeQuality.HD,
+                        autoPlay: false,
+                        showThumbnail: true,
+                        callbackController: (controller) {
+                          videoCtrl = controller;
+                        },
+                      ),
+                    ),
                   );
                 },
               ),
@@ -33,11 +43,15 @@ class GameplayGuide extends StatelessWidget {
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}");
           }
-          return Center(
-            child: CircularProgressIndicator(),
+          return Container(
+            color: MyColors.darkGrey,
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
           );
         },
       ),
     );
   }
 }
+

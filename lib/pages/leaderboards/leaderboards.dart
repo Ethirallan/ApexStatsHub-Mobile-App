@@ -39,13 +39,17 @@ class LeaderBoardsState extends State<LeaderBoards> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  ApexPlayerSearchBar(
-                    context: context,
-                    searchBarCtrl: scopedPlayerInfo.searchPlayerCtrl,
-                    arrowFunction: () async {
-                      if (scopedPlayerInfo.searchPlayerCtrl.text != '') {
-                        await searchForPlayer();
-                      }
+                  ScopedModelDescendant<ScopedPlayerInfo>(
+                    builder: (context, child, model) {
+                      return ApexPlayerSearchBar(
+                        context: context,
+                        searchBarCtrl: scopedPlayerInfo.searchPlayerCtrl,
+                        arrowFunction: () async {
+                          if (scopedPlayerInfo.searchPlayerCtrl.text != '') {
+                            await searchForPlayer();
+                          }
+                        },
+                      );
                     },
                   ),
                   PlayerStats(),
@@ -65,7 +69,9 @@ class LeaderBoardsState extends State<LeaderBoards> {
     }
     loadingDialog(context);
     var data = await getPlayerData(scopedPlayerInfo.searchPlayerCtrl.text);
-    scopedPlayerInfo.setData(data);
+    if (data != null) {
+      scopedPlayerInfo.setData(data);
+    }
     Navigator.pop(context);
   }
 }

@@ -12,7 +12,7 @@ class Guides extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 4,
       initialIndex: 0,
       child: Scaffold(
         appBar: AppBar(
@@ -23,9 +23,9 @@ class Guides extends StatelessWidget {
         body: TabBarView(
           children: <Widget>[
             AllGuides(),
-            GameplayGuide(),
-            CharacterGuides(),
-            WeaponsGuide()
+            GameplayGuides(),
+            CharactersGuides(),
+            WeaponsGuides(),
           ],
         ),
         drawer: MyDrawer(),

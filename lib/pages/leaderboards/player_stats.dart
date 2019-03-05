@@ -49,7 +49,11 @@ class PlayerStats extends StatelessWidget {
                         padding: EdgeInsets.only(left: 20, right: 20),
                         child: textNormal(model.playerData.name, MyColors.orange, 30),
                       ),
-                      Icon(Icons.laptop_windows, color: Colors.white, size: 30,)
+                      ScopedModelDescendant<ScopedPlayerInfo>(
+                        builder: (context, child, model) {
+                          return Icon(ScopedPlayerInfo().platformIcon, color: Colors.white, size: 30,);
+                        },
+                      ),
                     ],
                   ),
                   Container(
