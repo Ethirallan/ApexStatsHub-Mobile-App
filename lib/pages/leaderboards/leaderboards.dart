@@ -15,50 +15,43 @@ class LeaderBoards extends StatefulWidget {
   }
 }
 
-class LeaderBoardsState extends State<LeaderBoards> {
+class LeaderBoardsState extends State<LeaderBoards> with AutomaticKeepAliveClientMixin<LeaderBoards> {
   static final ScopedPlayerInfo scopedPlayerInfo = new ScopedPlayerInfo();
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () {
-        onExitDialog(context);
-      },
-      child: ScopedModel<ScopedPlayerInfo>(
-        model: scopedPlayerInfo,
-        child: Scaffold(
-          appBar: AppBar(
-            iconTheme: new IconThemeData(color: MyColors.lightGrey),
-            backgroundColor: MyColors.grey,
-            title: textNormal('Leaderboards', MyColors.lightGrey, 20),
-          ),
-          body: SingleChildScrollView(
-            child: Container(
-              color: MyColors.darkGrey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  ScopedModelDescendant<ScopedPlayerInfo>(
-                    builder: (context, child, model) {
-                      return ApexPlayerSearchBar(
-                        context: context,
-                        searchBarCtrl: scopedPlayerInfo.searchPlayerCtrl,
-                        arrowFunction: () async {
-                          if (scopedPlayerInfo.searchPlayerCtrl.text != '') {
-                            await searchForPlayer();
-                          }
-                        },
-                      );
-                    },
-                  ),
-                  PlayerStats(),
-                ],
-              ),
+    return ScopedModel<ScopedPlayerInfo>(
+      model: scopedPlayerInfo,
+      child: Scaffold(
+        appBar: AppBar(
+          iconTheme: new IconThemeData(color: MyColors.lightGrey),
+          backgroundColor: MyColors.grey,
+          title: textNormal('Leaderboards', MyColors.lightGrey, 20),
+        ),
+        body: SingleChildScrollView(
+          child: Container(
+            color: MyColors.darkGrey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                ScopedModelDescendant<ScopedPlayerInfo>(
+                  builder: (context, child, model) {
+                    return ApexPlayerSearchBar(
+                      context: context,
+                      searchBarCtrl: scopedPlayerInfo.searchPlayerCtrl,
+                      arrowFunction: () async {
+                        await searchForPlayer();
+                      },
+                    );
+                  },
+                ),
+                PlayerStats(),
+              ],
             ),
           ),
-          drawer: MyDrawer(),
         ),
+        drawer: MyDrawer(),
       ),
     );
   }
@@ -67,11 +60,18 @@ class LeaderBoardsState extends State<LeaderBoards> {
     if (context != null) {
       FocusScope.of(context).requestFocus(new FocusNode());
     }
-    loadingDialog(context);
-    var data = await getPlayerData(scopedPlayerInfo.searchPlayerCtrl.text);
-    if (data != null) {
-      scopedPlayerInfo.setData(data);
+    if (scopedPlayerInfo.searchPlayerCtrl.text != '') {
+      loadingDialog(context);
+      var data = await getPlayerData(scopedPlayerInfo.searchPlayerCtrl.text);
+      if (data != null) {
+        scopedPlayerInfo.setData(data);
+      } else {
+        scopedPlayerInfo.setData(new PlayerData());
+      }
+      Navigator.pop(context);
     }
-    Navigator.pop(context);
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

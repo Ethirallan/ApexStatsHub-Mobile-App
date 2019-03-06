@@ -3,7 +3,14 @@ import 'package:apex_stats_hub/custom_widgets.dart';
 import 'package:apex_stats_hub/my_colors.dart';
 import 'package:apex_stats_hub/my_drawer.dart';
 
-class News extends StatelessWidget {
+class News extends StatefulWidget {
+  @override
+  NewsState createState() {
+    return new NewsState();
+  }
+}
+
+class NewsState extends State<News> with AutomaticKeepAliveClientMixin<News>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,8 +21,14 @@ class News extends StatelessWidget {
       ),
       body: Container(
         color: MyColors.darkGrey,
+        child: Center(
+          child: textBold('COMING SOON!', MyColors.lightGrey, 30),
+        ),
       ),
       drawer: MyDrawer(),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

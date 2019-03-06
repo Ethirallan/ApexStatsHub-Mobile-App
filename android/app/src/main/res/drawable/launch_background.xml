@@ -4,6 +4,6 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/icon500" />
+            android:src="@drawable/icon_transparent" />
     </item>
 </layer-list>

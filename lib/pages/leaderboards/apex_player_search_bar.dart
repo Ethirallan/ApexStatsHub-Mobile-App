@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:apex_stats_hub/my_colors.dart';
 import 'package:apex_stats_hub/pages/leaderboards/leaderboards.dart';
 import 'package:apex_stats_hub/custom_widgets.dart';
+import 'package:apex_stats_hub/models/player_data_http.dart';
 
 class ApexPlayerSearchBar extends StatelessWidget {
   final BuildContext context;
@@ -72,7 +73,22 @@ class ApexPlayerSearchBar extends StatelessWidget {
         controller: ctrl,
         textInputAction: TextInputAction.search,
         onFieldSubmitted: (term) async {
-          await LeaderBoardsState().searchForPlayer();
+          if (context != null) {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          }
+          if (LeaderBoardsState.scopedPlayerInfo.searchPlayerCtrl.text != '') {
+            if (context != null) {
+              FocusScope.of(context).requestFocus(new FocusNode());
+            }
+            loadingDialog(context);
+            var data = await getPlayerData(LeaderBoardsState.scopedPlayerInfo.searchPlayerCtrl.text);
+            if (data != null) {
+              LeaderBoardsState.scopedPlayerInfo.setData(data);
+            } else {
+              LeaderBoardsState.scopedPlayerInfo.setData(new PlayerData());
+            }
+            Navigator.pop(context);
+          }
         },
         decoration: InputDecoration(
           border: InputBorder.none,

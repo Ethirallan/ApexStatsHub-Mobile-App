@@ -5,8 +5,15 @@ import 'package:apex_stats_hub/my_drawer.dart';
 import 'package:apex_stats_hub/pages/wiki/legends_fragment.dart';
 import 'package:apex_stats_hub/pages/wiki/weapons_fragment.dart';
 
-class Wiki extends StatelessWidget {
+class Wiki extends StatefulWidget {
 
+  @override
+  WikiState createState() {
+    return new WikiState();
+  }
+}
+
+class WikiState extends State<Wiki> with AutomaticKeepAliveClientMixin<Wiki> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -44,4 +51,7 @@ class Wiki extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

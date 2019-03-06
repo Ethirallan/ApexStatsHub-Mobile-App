@@ -6,7 +6,6 @@ import 'package:apex_stats_hub/pages/leaderboards/leaderboards.dart';
 Future<PlayerData> getPlayerData(String name) async {
   PlayerData playerData;
   String url = 'http://vakedomen.ddns.net:4000/player?platform=${LeaderBoardsState.scopedPlayerInfo.selectedPlatform}&player=$name';
-  print(url);
   var response = await http.get(url);
   if (response.statusCode == 200) {
     Map<String, dynamic> json = convert.jsonDecode(response.body);

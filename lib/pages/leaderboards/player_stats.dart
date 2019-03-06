@@ -12,7 +12,7 @@ class PlayerStats extends StatelessWidget {
       builder: (context, child, model) {
         if (model.playerData.name == null) {
           return Container(
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.height-150,
             padding: EdgeInsets.only(top:250),
             child: Column(
               children: <Widget>[

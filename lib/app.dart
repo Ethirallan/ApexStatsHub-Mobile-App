@@ -1,24 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:apex_stats_hub/pages/leaderboards/leaderboards.dart';
-import 'package:apex_stats_hub/pages/guides/guides.dart';
-import 'package:apex_stats_hub/pages/streams/streams.dart';
 import 'package:apex_stats_hub/pages/news/news.dart';
 import 'package:apex_stats_hub/pages/wiki/wiki.dart';
+import 'package:apex_stats_hub/custom_widgets.dart';
 
 class App extends StatelessWidget {
+
+  static final PageController pageController = new PageController(initialPage: 1);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/',
-      routes: {
-        // When we navigate to the "/" route, build the FirstScreen Widget
-        '/': (context) => LeaderBoards(),
-        // When we navigate to the "/second" route, build the SecondScreen Widget
-        '/news': (context) => News(),
-        '/guides': (context) => Guides(),
-        '/streams': (context) => Streams(),
-        '/wiki': (context) => Wiki(),
-      },
+      home: WillPopScope(
+        onWillPop: () {
+          onExitDialog(context);
+        },
+        child: PageView(
+          controller: pageController,
+          physics: NeverScrollableScrollPhysics(),
+          children: <Widget>[
+            News(),
+            LeaderBoards(),
+            Wiki(),
+          ],
+        ),
+      ),
     );
   }
 }
