@@ -6,6 +6,7 @@ import 'package:apex_stats_hub/custom_widgets.dart';
 
 
 class LegendsFragment extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,7 +42,7 @@ class LegendsFragment extends StatelessWidget {
                             Expanded(
                               flex: 1,
                               child: Hero(
-                                child: Image.network(legend.image.url),
+                                child: FadeInImage.assetNetwork(image: legend.image.url, placeholder: 'assets/icon.jpg',),
                                 tag: 'legendImg' + legend.name,
                               ),
                             ),

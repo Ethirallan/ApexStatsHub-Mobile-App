@@ -19,7 +19,7 @@ class ScopedPlayerInfo extends Model {
     selectedPlatform = val;
     if (val == 'pc') {
       platformIcon = Icons.laptop_windows;
-    } else if (val == 'ps') {
+    } else if (val == 'psn') {
       platformIcon = Icons.gamepad;
     } else {
       platformIcon = Icons.videogame_asset;

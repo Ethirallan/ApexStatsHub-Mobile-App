@@ -58,7 +58,7 @@ class WeaponsFragment extends StatelessWidget {
                             ),
                             Expanded(
                               child: Hero(
-                                child: Image.network(weapon.image.url),
+                                child: FadeInImage.assetNetwork(image: weapon.image.url, placeholder: 'assets/icon.jpg',),
                                 tag: 'weaponImg' + weapon.name,
                               ),
                             ),

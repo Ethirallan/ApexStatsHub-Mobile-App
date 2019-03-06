@@ -32,8 +32,8 @@ class ApexPlayerSearchBar extends StatelessWidget {
             },
             itemBuilder: (_) => <PopupMenuItem<String>>[
               PopupMenuItem<String>(child: textNormal('Windows', MyColors.orange, 20), value: 'pc'),
-              PopupMenuItem<String>(child: textNormal('PlayStation', MyColors.orange, 20), value: 'ps'),
-              PopupMenuItem<String>(child: textNormal('Xbox', MyColors.orange, 20), value: 'xb'),
+              PopupMenuItem<String>(child: textNormal('PlayStation', MyColors.orange, 20), value: 'psn'),
+              PopupMenuItem<String>(child: textNormal('Xbox', MyColors.orange, 20), value: 'xbl'),
             ],
           ),
         ),

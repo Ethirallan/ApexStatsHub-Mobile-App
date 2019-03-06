@@ -3,6 +3,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:apex_stats_hub/scoped_models/scoped_player_info.dart';
 import 'package:apex_stats_hub/custom_widgets.dart';
 import 'package:apex_stats_hub/my_colors.dart';
+import 'package:apex_stats_hub/pages/leaderboards/leaderboards.dart';
 
 class PlayerStats extends StatelessWidget {
   @override
@@ -51,7 +52,7 @@ class PlayerStats extends StatelessWidget {
                       ),
                       ScopedModelDescendant<ScopedPlayerInfo>(
                         builder: (context, child, model) {
-                          return Icon(ScopedPlayerInfo().platformIcon, color: Colors.white, size: 30,);
+                          return Icon(LeaderBoardsState.scopedPlayerInfo.platformIcon, color: Colors.white, size: 30,);
                         },
                       ),
                     ],
@@ -230,16 +231,12 @@ class PlayerStats extends StatelessWidget {
         children: <Widget>[
           Column(
             children: <Widget>[
-              Container(
-                width: 100,
+              FadeInImage.assetNetwork(
+                image: img,
+                placeholder: 'assets/icon.jpg',
                 height: 100,
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: NetworkImage(img)
-                  ),
-                ),
+                width: 100,
+                fit: BoxFit.fill,
               ),
               textNormal(legend, Colors.white, 20),
             ],
