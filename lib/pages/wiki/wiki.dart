@@ -19,33 +19,38 @@ class WikiState extends State<Wiki> with AutomaticKeepAliveClientMixin<Wiki> {
     return DefaultTabController(
       length: 2,
       initialIndex: 0,
-      child: Scaffold(
-        appBar: AppBar(
-          iconTheme: new IconThemeData(color: MyColors.lightGrey),
-          backgroundColor: MyColors.grey,
-          title: textNormal('Wiki', MyColors.lightGrey, 20),
-        ),
-        body: TabBarView(
-          children: <Widget>[
-            LegendsFragment(),
-            WeaponsFragment(),
-          ],
-        ),
-        drawer: MyDrawer(),
-        bottomNavigationBar: Material(
-          color: MyColors.grey,
-          child: TabBar(
-            labelColor: MyColors.lightGrey,
-            unselectedLabelColor: MyColors.lightGrey,
-            indicatorColor: MyColors.orange,
-            tabs: <Widget>[
-              Tab(
-                child: Text('Legends', style: TextStyle(fontSize: 20),),
-              ),
-              Tab(
-                child: Text('Weapons', style: TextStyle(fontSize: 20),),
-              ),
+      child: WillPopScope(
+        onWillPop: () {
+          onExitDialog(context);
+        },
+        child: Scaffold(
+          appBar: AppBar(
+            iconTheme: new IconThemeData(color: MyColors.lightGrey),
+            backgroundColor: MyColors.grey,
+            title: textNormal('Wiki', MyColors.lightGrey, 20),
+          ),
+          body: TabBarView(
+            children: <Widget>[
+              LegendsFragment(),
+              WeaponsFragment(),
             ],
+          ),
+          drawer: MyDrawer(),
+          bottomNavigationBar: Material(
+            color: MyColors.grey,
+            child: TabBar(
+              labelColor: MyColors.lightGrey,
+              unselectedLabelColor: MyColors.lightGrey,
+              indicatorColor: MyColors.orange,
+              tabs: <Widget>[
+                Tab(
+                  child: Text('Legends', style: TextStyle(fontSize: 20),),
+                ),
+                Tab(
+                  child: Text('Weapons', style: TextStyle(fontSize: 20),),
+                ),
+              ],
+            ),
           ),
         ),
       ),

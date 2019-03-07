@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
+import 'package:apex_stats_hub/my_colors.dart';
 
 Widget textNormal(String text, Color color, double size, {TextAlign textAlign}) {
   return Text(
@@ -43,23 +44,28 @@ Future<bool> onExitDialog(BuildContext context) {
   return showDialog(
     context: context,
     builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text("Exit dialog"),
-        content: Text("Do you really want to exit?"),
-        actions: <Widget>[
-          FlatButton(
-            child: Text("Yes"),
-            onPressed: () {
-              exit(0);
-            },
-          ),
-          FlatButton(
-            child: Text("No"),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ],
+      return Theme(
+        data: Theme.of(context).copyWith(
+          dialogBackgroundColor: MyColors.grey,
+        ),
+        child: AlertDialog(
+          title: Text("Exit dialog", style: TextStyle(color: Colors.white, fontSize: 20),),
+          content: Text("Do you really want to exit?", style: TextStyle(color: MyColors.lightGrey, fontSize: 18),),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("Yes", style: TextStyle(color: MyColors.orange, fontSize: 18),),
+              onPressed: () {
+                exit(0);
+              },
+            ),
+            FlatButton(
+              child: Text("No", style: TextStyle(color: MyColors.orange, fontSize: 18),),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       );
     },
   ) ?? false;
@@ -72,14 +78,23 @@ void loadingDialog(BuildContext context) {
     builder: (BuildContext context) {
       return WillPopScope(
         onWillPop: () async => false,
-        child: AlertDialog(
-          title: Text("Loading ..."),
-          content: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              CircularProgressIndicator(),
-            ],
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            dialogBackgroundColor: MyColors.grey,
+            accentColor: MyColors.orange,
+          ),
+          child: AlertDialog(
+            title: Text("Loading ...", style: TextStyle(color: Colors.white, fontSize: 20), textAlign: TextAlign.center,),
+            content: Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  CircularProgressIndicator(),
+                ],
+              ),
+            ),
           ),
         ),
       );

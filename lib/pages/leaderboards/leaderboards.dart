@@ -20,38 +20,43 @@ class LeaderBoardsState extends State<LeaderBoards> with AutomaticKeepAliveClien
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModel<ScopedPlayerInfo>(
-      model: scopedPlayerInfo,
-      child: Scaffold(
-        appBar: AppBar(
-          iconTheme: new IconThemeData(color: MyColors.lightGrey),
-          backgroundColor: MyColors.grey,
-          title: textNormal('Leaderboards', MyColors.lightGrey, 20),
-        ),
-        body: SingleChildScrollView(
-          child: Container(
-            color: MyColors.darkGrey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                ScopedModelDescendant<ScopedPlayerInfo>(
-                  builder: (context, child, model) {
-                    return ApexPlayerSearchBar(
-                      context: context,
-                      searchBarCtrl: scopedPlayerInfo.searchPlayerCtrl,
-                      arrowFunction: () async {
-                        await searchForPlayer();
-                      },
-                    );
-                  },
-                ),
-                PlayerStats(),
-              ],
+    return WillPopScope(
+      onWillPop: () {
+        onExitDialog(context);
+      },
+      child: ScopedModel<ScopedPlayerInfo>(
+        model: scopedPlayerInfo,
+        child: Scaffold(
+          appBar: AppBar(
+            iconTheme: new IconThemeData(color: MyColors.lightGrey),
+            backgroundColor: MyColors.grey,
+            title: textNormal('Leaderboards', MyColors.lightGrey, 20),
+          ),
+          body: SingleChildScrollView(
+            child: Container(
+              color: MyColors.darkGrey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  ScopedModelDescendant<ScopedPlayerInfo>(
+                    builder: (context, child, model) {
+                      return ApexPlayerSearchBar(
+                        context: context,
+                        searchBarCtrl: scopedPlayerInfo.searchPlayerCtrl,
+                        arrowFunction: () async {
+                          await searchForPlayer();
+                        },
+                      );
+                    },
+                  ),
+                  PlayerStats(),
+                ],
+              ),
             ),
           ),
+          drawer: MyDrawer(),
         ),
-        drawer: MyDrawer(),
       ),
     );
   }
